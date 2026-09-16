@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<title>Hunch Portfolio</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #111;
+}
+
+/* Sticky Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center
+}
+
+header a {
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+/* Dropdown menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown select {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+}
+
+/* Gallery Grid */
+.gallery {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+.gallery-item {
+  text-decoration: none;
+  color: inherit;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item span {
+  display: block;
+  margin-top: 14px;
+  font-size: 15px;
+  text-decoration: underline;
+  letter-spacing: 0.02em;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.02);
+}
+
+/* Image-only sections */
+.section {
+  border-top: 1px dashed #ddd;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.section h2 {
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.image-stack {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.image-stack img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid #e5e5e5;
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+footer h4 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    padding: 40px 20px 80px;
+  }
+
+  .gallery-item img {
+    height: 300px;
+  }
+
+  footer {
+    grid-template-columns: 1fr;
+  }
+
+  .image-stack {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+</style>
+
+<script>
+function goToScreen(select) {
+  const page = select.value;
+  if (page) {
+    window.location.href = page;
+  }
+}
+</script>
+</head>
+
+<body>
+
+<div id="header-placeholder"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+</script>
+
+<!-- MAIN GALLERY -->
+<main class="gallery" id="gallery"></main>
+
+<script>
+const galleryItems = [
+  {
+    href: "screen1.html",
+    src: "images/Piholsterangled",
+    alt: "CAD Model",
+    caption: "Cad Models"
+  },
+  {
+    href: "screen2.html",
+    src: "images/Pi-Temps.png",
+    alt: "Data",
+    caption: "Data"
+  },
+  {
+    href: "screen3.html",
+    src: "images/Sketch_1.jpeg",
+    alt: "Sketch Example",
+    caption: "Early Sketches"
+  },
+  {
+    href: "screen4.html",
+    src: "images/Design0.jpg",
+    alt: "Design",
+    caption: "Design so far"
+  },
+  {
+    href: "screen5.html",
+    src: "images/IMG_20260218_115855154.jpg",
+    alt: "How it works",
+    caption: "How it works"
+  },
+  {
+    href: "screen6.html",
+    src: "images/Design4.jpg",
+    alt: "Future Improvements",
+    caption: "Future Improvements"
+  }
+];
+
+const gallery = document.getElementById("gallery");
+galleryItems.forEach(item => {
+  const a = document.createElement("a");
+  a.href = item.href;
+  a.className = "gallery-item";
+
+  const img = document.createElement("img");
+  img.src = item.src;
+  img.alt = item.alt;
+
+  const span = document.createElement("span");
+  span.textContent = item.caption;
+
+  a.appendChild(img);
+  a.appendChild(span);
+  gallery.appendChild(a);
+});
+</script>
+
+<!-- IMAGE-ONLY SECTIONS (Reduced images) -->
+<section class="section">
+  <div class="image-stack">
+    <img src="images/Hunch.jpeg">
+    <img src="images/WarrenTech.png">
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <h4>Teacher email</h4>
+    <p>Zachary.Flower@gmail.com</p>
+  </div>
+
+  <div>
+    <h4>Team Name</h4>
+    <p>JORT server farm</p>
+  </div>
+
+  <div>
+    <h4>School</h4>
+    <p>Warren Tech Central</p>
+  </div>
+</footer>
+
+</body>
+</html>
