@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #111;
+}
+
+/* Sticky Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center
+}
+
+header a {
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+/* Dropdown menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown select {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+}
+
+/* Gallery Grid */
+.gallery {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+.gallery-item {
+  text-decoration: none;
+  color: inherit;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item span {
+  display: block;
+  margin-top: 14px;
+  font-size: 15px;
+  text-decoration: underline;
+  letter-spacing: 0.02em;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.02);
+}
+
+/* Image-only sections */
+.section {
+  border-top: 1px dashed #ddd;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.section h2 {
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.image-stack {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.image-stack img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid #e5e5e5;
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+footer h4 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    padding: 40px 20px 80px;
+  }
+
+  .gallery-item img {
+    height: 300px;
+  }
+
+  footer {
+    grid-template-columns: 1fr;
+  }
+
+  .image-stack {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
